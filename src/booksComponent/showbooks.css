@@ -1,0 +1,41 @@
+.book{
+    border: 1px solid black;
+    margin: 10px auto;
+    text-align: center;
+    width: 400px;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.book:hover{
+    color: orange;
+    cursor: pointer;
+}
+
+/* .navbar ul{
+    list-style: none;
+}
+
+.navbar li{
+    display: inline-block;
+    margin: 20px;
+}
+.navbar a{
+    text-decoration: none;
+    color: black;
+} */
+
+.navbar ul{
+    list-style: none;
+}
+.navbar li{
+    margin: 5px 20px;
+    display: inline-block;
+}
+.navbar a{
+    text-decoration: none;
+    color: black;
+}
+.navbar a:hover, a.active{
+    color: orange;
+}
