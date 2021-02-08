@@ -3,6 +3,7 @@ import ItemShow from "./ItemShow"
 import ItemDescription from "./ItemDescription";
 import { CardColumns, Modal, ModalBody, ModalFooter, Button } from "reactstrap"
 import { connect } from "react-redux"
+import * as actionTypes from "../../redux/actionTypes"
 
 const mapStateToProps = state => {
     return {
@@ -14,7 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         add_comment: (dishId, author, comment, rating) => dispatch({
-            type: "ADD_COMMENT",
+            type: actionTypes.ADD_COMMENT,
             payload: {
                 author: author,
                 comment: comment,
