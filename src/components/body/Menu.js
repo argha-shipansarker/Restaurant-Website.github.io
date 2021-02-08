@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import DISHES from "../../data/dishes";
-import Comments from "../../data/comments"
 import ItemShow from "./ItemShow"
 import ItemDescription from "./ItemDescription";
 import { CardColumns, Modal, ModalBody, ModalFooter, Button } from "reactstrap"
+import { connect } from "react-redux"
+
+const mapStateToProps = state => {
+    return {
+        dish: state.dishes,
+        comments: state.comments,
+    }
+}
 
 class Menu extends Component {
     state = {
-        dish: DISHES,
-        comments: Comments,
         description: null,
         modalOpen: false,
     }
@@ -16,7 +20,7 @@ class Menu extends Component {
     show_description = (item) => {
         this.setState(
             {
-                description: <ItemDescription item={item} comments={this.state.comments} />,
+                description: <ItemDescription item={item} key={item.id} />,
                 modalOpen: !this.state.modalOpen,
             }
         )
@@ -30,8 +34,9 @@ class Menu extends Component {
     }
 
     render() {
+        console.log(this.props.comments);
         document.title = "Menu"
-        const items = this.state.dish.map(item => (
+        const items = this.props.dish.map(item => (
             <ItemShow
                 item={item}
                 key={item.id}
@@ -43,7 +48,7 @@ class Menu extends Component {
                     <CardColumns>
                         {items}
                     </CardColumns>
-                    <Modal isOpen={this.state.modalOpen} onClick={this.toggleModal}>
+                    <Modal isOpen={this.state.modalOpen}>
                         <ModalBody>
                             {this.state.description}
                         </ModalBody>
@@ -59,4 +64,4 @@ class Menu extends Component {
     }
 }
 
-export default Menu;
+export default connect(mapStateToProps)(Menu);

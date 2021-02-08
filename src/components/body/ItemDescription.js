@@ -1,11 +1,21 @@
 import React from 'react'
 import { Card, CardBody, CardImg, CardTitle, CardText } from "reactstrap";
 import ShowComment from "./ShowComment"
+import CommentForm from "./CommentForm"
+import { connect } from "react-redux"
+
+const mapStateToProps = state => {
+    return {
+        comments: state.comments,
+    }
+}
 
 function ItemDescription({ item, comments }) {
+    console.log(comments);
 
     const comment = comments.filter(comment => item.id === comment.dishId);
-    const comm = comment.map(comment => <ShowComment comment={comment} />)
+    console.log(comment);
+    const comm = comment.map(comment => <ShowComment comment={comment} key={comment.id} />)
     return (
         <div>
             <Card className="my-2">
@@ -19,10 +29,11 @@ function ItemDescription({ item, comments }) {
                     <CardText style={{ textAlign: "left" }}>
                         Price: {item.price}/-
                     </CardText>
-                    <CardText style={{ textAlign: "left" }}>
+                    <div style={{ textAlign: "left" }}>
                         {comm}
-                    </CardText>
-
+                    </div>
+                    <hr />
+                    <CommentForm dishId={item.id} />
 
                 </CardBody>
             </Card>
@@ -30,4 +41,4 @@ function ItemDescription({ item, comments }) {
     )
 }
 
-export default ItemDescription
+export default connect(mapStateToProps)(ItemDescription);

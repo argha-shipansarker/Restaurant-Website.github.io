@@ -19,9 +19,9 @@ class Navigation extends Component {
                 <Navbar color="dark" dark expand="md">
                     <div className="container">
                         <NavbarToggler onClick={this.navtoggle} />
-                        <NavbarBrand>
-                            <Link to="/" style={{ color: 'white' }}>Bohubrihi Restaurant</Link>
-                        </NavbarBrand>
+                        {/* <NavbarBrand> */}
+                        <Link to="/" style={{ color: 'white' }} className="navbar-brand">Bohubrihi Restaurant</Link>
+                        {/* </NavbarBrand> */}
                         <Collapse navbar isOpen={this.state.isNavOpen}>
                             <Nav className="mr-auto" navbar>
                                 <NavItem>
