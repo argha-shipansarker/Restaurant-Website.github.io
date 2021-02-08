@@ -10,7 +10,7 @@ const mapStateToProps = state => {
     }
 }
 
-function ItemDescription({ item, comments }) {
+function ItemDescription({ item, comments, add_comment }) {
     console.log(comments);
 
     const comment = comments.filter(comment => item.id === comment.dishId);
@@ -33,7 +33,7 @@ function ItemDescription({ item, comments }) {
                         {comm}
                     </div>
                     <hr />
-                    <CommentForm dishId={item.id} />
+                    <CommentForm dishId={item.id} add_comment={add_comment} />
 
                 </CardBody>
             </Card>

@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Input } from "reactstrap"
-import { connect } from "react-redux"
 
-const mapDispatchToProps = dispatch => {
-    return {
-        add_comment: (dishId, author, comment, rating) => dispatch({
-            type: "ADD_COMMENT",
-            payload: {
-                author: author,
-                comment: comment,
-                rating: rating,
-                dishId: dishId,
-            }
-        })
-    }
-}
+
 
 
 class CommentForm extends Component {
@@ -66,6 +53,7 @@ class CommentForm extends Component {
                         name="rating"
                         value={this.state.rating}
                         onChange={this.handalInputChange}>
+                        <option>Choose one</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -88,4 +76,4 @@ class CommentForm extends Component {
     }
 }
 
-export default connect(null, mapDispatchToProps)(CommentForm);
+export default CommentForm;

@@ -11,6 +11,20 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        add_comment: (dishId, author, comment, rating) => dispatch({
+            type: "ADD_COMMENT",
+            payload: {
+                author: author,
+                comment: comment,
+                rating: rating,
+                dishId: dishId,
+            }
+        })
+    }
+}
+
 class Menu extends Component {
     state = {
         description: null,
@@ -20,7 +34,7 @@ class Menu extends Component {
     show_description = (item) => {
         this.setState(
             {
-                description: <ItemDescription item={item} key={item.id} />,
+                description: <ItemDescription item={item} key={item.id} add_comment={this.props.add_comment} />,
                 modalOpen: !this.state.modalOpen,
             }
         )
@@ -64,4 +78,4 @@ class Menu extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
